@@ -34,11 +34,26 @@ def load_data(pokegen, poketype):
     return df
 
 
+def  sort_stats(df):
+
+    print('Top 5 Pokemon with the highest attack stats:\n')  
+    print(df.sort_values('attack', ascending=False).head(5))
+
+    print('Top 5 Pokemon with the highest defense stats:\n')  
+    print(df.sort_values('defense', ascending=False).head(5))
+
+    print('Top 5 Pokemon with the highest special attack stats:\n')  
+    print(df.sort_values('sp_attack', ascending=False).head(5))
+
+    print('Top 5 Pokemon with the highest defense stats:\n')  
+    print(df.sort_values('sp_defense', ascending=False).head(5))
+
 def main():
     while True:
         pokegen, poketype = get_input()
         df = load_data(pokegen, poketype)
         print(df)
+        sort_stats(df)
 
         restart = input('\nWould you like to restart? Enter yes or no:\n')
         if restart.lower() != 'yes':
