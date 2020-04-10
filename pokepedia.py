@@ -25,7 +25,11 @@ def load_data(pokegen, poketype):
     if poketype != 'all':
         df = df[(df['type1'] == poketype) | (df['type2'] == poketype)]
 
-    df = df.iloc[:, -11:-3]
+    cols = list(df.columns.values)
+
+    df = df[cols[0:19] + cols[20:25] + cols [26:33] + [cols[19]] + [cols[25]] + cols[33:]]    
+
+    df = df.iloc[:, -13:-3]
 
     return df
 
