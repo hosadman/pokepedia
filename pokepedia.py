@@ -29,8 +29,6 @@ def load_data(pokegen, poketype):
 
     df = df[cols[0:19] + cols[20:25] + cols [26:33] + [cols[19]] + [cols[25]] + cols[33:]]    
 
-    
-
     return df
 
 
@@ -54,11 +52,23 @@ def  sort_stats(df):
     print(df.sort_values('speed', ascending=False).head(5))
 
 
+def general_stats(df):
+
+    cols = list(df.columns.values)
+
+    df = df[[cols[28]] + [cols[0]] + [cols[23]]]
+
+    print('The general information of these Pokemon:\n')   
+    print(df)
+
+
+
 def main():
     while True:
         pokegen, poketype = get_input()
         df = load_data(pokegen, poketype)
         sort_stats(df)
+        general_stats(df)
 
         restart = input('\nWould you like to restart? Enter yes or no:\n')
         if restart.lower() != 'yes':
