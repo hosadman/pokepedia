@@ -48,6 +48,10 @@ def  sort_stats(df):
     print('Top 5 Pokemon with the highest defense stats:\n')  
     print(df.sort_values('sp_defense', ascending=False).head(5))
 
+    print('Top 5 Pokemon with the highest speed stats:\n')  
+    print(df.sort_values('speed', ascending=False).head(5))
+
+
 def main():
     while True:
         pokegen, poketype = get_input()
