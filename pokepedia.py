@@ -29,12 +29,14 @@ def load_data(pokegen, poketype):
 
     df = df[cols[0:19] + cols[20:25] + cols [26:33] + [cols[19]] + [cols[25]] + cols[33:]]    
 
-    df = df.iloc[:, -13:-3]
+    
 
     return df
 
 
 def  sort_stats(df):
+
+    df = df.iloc[:, -13:-3]
 
     print('Top 5 Pokemon with the highest attack stats:\n')  
     print(df.sort_values('attack', ascending=False).head(5))
@@ -56,7 +58,6 @@ def main():
     while True:
         pokegen, poketype = get_input()
         df = load_data(pokegen, poketype)
-        print(df)
         sort_stats(df)
 
         restart = input('\nWould you like to restart? Enter yes or no:\n')
