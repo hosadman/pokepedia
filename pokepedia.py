@@ -52,9 +52,8 @@ def  sort_stats(df):
 
 def general_stats(df):
 
-    cols = list(df.columns.values)
-
-    df = df[[cols[28]] + [cols[0]] + [cols[23]]]
+    
+    df = df[['name', 'classfication', 'weight_kg']]
 
     print('The general information of these Pokemon:\n')   
     print(df)
