@@ -25,16 +25,14 @@ def load_data(pokegen, poketype):
     if poketype != 'all':
         df = df[(df['type1'] == poketype) | (df['type2'] == poketype)]
 
-    cols = list(df.columns.values)
-
-    df = df[cols[0:19] + cols[20:25] + cols [26:33] + [cols[19]] + [cols[25]] + cols[33:]]    
+     
 
     return df
 
 
 def  sort_stats(df):
 
-    df = df.iloc[:, -13:-3]
+    df = df[['name', 'type1', 'type2', 'hp', 'attack', 'defense', 'sp_attack, 'sp_defense', 'speed']]
 
     print('Top 5 Pokemon with the highest attack stats:\n')  
     print(df.sort_values('attack', ascending=False).head(5))
