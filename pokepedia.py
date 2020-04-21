@@ -64,8 +64,9 @@ def main():
     while True:
         pokegen, poketype = get_input()
         df = load_data(pokegen, poketype)
-        sort_stats(df)
         general_stats(df)
+        sort_stats(df)
+        
 
         restart = input('\nWould you like to restart? Enter yes or no:\n')
         if restart.lower() != 'yes':
