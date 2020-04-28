@@ -1,7 +1,7 @@
-# Pokepedia
+# Poképedia
 
 ### Introduction
-This project explores the various data of Pokemon from generations 1-7. Applying filters such as what generation and Pokemon
+This project explores the various data of Pokémon from generations 1-7. Applying filters such as what generation and Pokémon
 type, we can narrow the data down and find out the various stats such as - attack, defence, sp. atk., sp. def and speed.
 
 ### Programming Languages Used
