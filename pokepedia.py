@@ -30,7 +30,7 @@ def load_data(pokegen, poketype):
     return df
 
 
-def  sort_stats(df):
+def sort_stats(df):
 
     df = df[['name', 'hp', 'attack', 'defense', 'sp_attack, 'sp_defense', 'speed', 'base_total']]
 
@@ -51,6 +51,9 @@ def  sort_stats(df):
 
     print('Top 5 Pokemon with the highest speed stats:\n')  
     print(df.sort_values('speed', ascending=False).head(5))
+
+    print('Top 5 Pokemon with the highest base total stats:\n')  
+    print(df.sort_values('base_total', ascending=False).head(5))
 
 
 def general_stats(df):
