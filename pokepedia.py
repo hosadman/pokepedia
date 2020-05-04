@@ -59,7 +59,7 @@ def sort_stats(df):
 def general_stats(df):
 
     
-    df = df[['name', 'type1', 'type2', 'classfication', 'weight_kg']]
+    df = df[['name', 'type1', 'type2', 'classfication', 'height_m', 'weight_kg']]
 
     print('The number of Pokemon based on the filters: {}'.format(str(df.shape[0])))
     print('The general information of these Pokemon:\n')   
