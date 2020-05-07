@@ -8,6 +8,9 @@ def get_input():
     print('Hello and welcome to PokePedia! Let\'s explore the wonderful world of Pokemon!')
     
     pokegen = input('Enter any desired generation from 1-7 whose Pokemon you wish to explore\n(type "all" if you wish to see all"):\n').lower()
+    while pokegen not in ['all', '1', '2', '3', '4', '5', '6', '7']:
+        pokegen = input('Invalid input. Either input numbers 1-7 or type 'all' for all generations').lower()
+    
     poketype = input('Enter any Pokemon type whose data you wish to explore\n(type "all" if you wish to see all"):\n').lower()
     
     print('-'*20)
