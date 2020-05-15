@@ -3,9 +3,33 @@ import pandas as pd
 import numpy as np
 
 
-def get_input():
-    
+def first_input():
+
     print('Hello and welcome to PokePedia! Let\'s explore the wonderful world of Pokemon!')
+
+    search = input('Choose whether to search for Pokemon on basis of "name" or "type":\n').lower()
+    while search not in ['name', 'type']:
+        search = input('Invalid input. Either input "name" or "type"').lower()
+
+    return search
+
+def poke_input():
+    
+    name = input('Enter Pokemon name:').title()
+
+    return name
+
+def load_data1(name):
+    
+    df = pd.read_csv('pokemon.csv')
+
+    df = df[['name', 'type1', 'type2', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'base_total']]
+
+    df = df[df['name'] == name]
+
+    return df
+
+def type_input():
     
     pokegen = input('Enter any desired generation from 1-7 whose Pokemon you wish to explore\n(type "all" if you wish to see all"):\n').lower()
     while pokegen not in ['all', '1', '2', '3', '4', '5', '6', '7']:
@@ -19,7 +43,7 @@ def get_input():
     return pokegen, poketype
 
 
-def load_data(pokegen, poketype):
+def load_data2(pokegen, poketype):
     
     df = pd.read_csv('pokemon.csv')
 
@@ -74,10 +98,16 @@ def general_stats(df):
 
 def main():
     while True:
-        pokegen, poketype = get_input()
-        df = load_data(pokegen, poketype)
-        general_stats(df)
-        sort_stats(df)
+        search = first_input()
+        if search == 'name':
+            name = poke_input()
+            df1 = load_data1(name)
+            print(df1)
+        else:
+            pokegen, poketype = type_input()
+            df = load_data2(pokegen, poketype)
+            general_stats(df)
+            sort_stats(df)
         
 
         restart = input('\nWould you like to restart? Enter yes or no:\n')
