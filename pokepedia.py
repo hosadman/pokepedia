@@ -9,11 +9,11 @@ def get_input():
     
     pokegen = input('Enter any desired generation from 1-7 whose Pokemon you wish to explore\n(type "all" if you wish to see all"):\n').lower()
     while pokegen not in ['all', '1', '2', '3', '4', '5', '6', '7']:
-        pokegen = input('Invalid input. Either input numbers 1-7 or type 'all' for all generations').lower()
+        pokegen = input('Invalid input. Either input numbers 1-7 or type "all" for all generations').lower()
     
     poketype = input('Enter any Pokemon type whose data you wish to explore\n(type "all" if you wish to see all"):\n').lower()
     while poketype not in ['all', 'fire', 'water', 'grass', 'electric', 'ground', 'rock', 'fighting', 'ice', 'flying', 'psychic', 'ghost', 'normal', 'dark', 'steel', 'bug', 'poison', 'dragon', 'fairy']:
-        poketype = input('Invalid input. Either input any specific Pokémon type or type 'all' for all types').lower()
+        poketype = input('Invalid input. Either input any specific Pokémon type or type "all" for all types').lower()
     
     print('-'*20)
     return pokegen, poketype
@@ -37,7 +37,7 @@ def load_data(pokegen, poketype):
 
 def sort_stats(df):
 
-    df = df[['name', 'hp', 'attack', 'defense', 'sp_attack, 'sp_defense', 'speed', 'base_total']]
+    df = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'base_total']]
 
     print('Top 5 Pokemon with the highest hp stats:\n')  
     print(df.sort_values('hp', ascending=False).head(5))
