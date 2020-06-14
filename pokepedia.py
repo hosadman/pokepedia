@@ -17,6 +17,7 @@ def poke_input():
     
     name = input('Enter Pokemon name:').title()
 
+    print('-'*20)
     return name
 
 def load_data1(name):
@@ -59,6 +60,16 @@ def load_data2(pokegen, poketype):
     return df
 
 
+def general_stats(df):
+
+    
+    df = df[['name', 'type1', 'type2', 'classfication', 'height_m', 'weight_kg']]
+
+    print('The number of Pokemon based on the filters: {}'.format(str(df.shape[0])))
+    print('The general information of these Pokemon:\n')   
+    print(df)    
+
+
 def sort_stats(df):
 
     df = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'base_total']]
@@ -83,16 +94,6 @@ def sort_stats(df):
 
     print('Top 5 Pokemon with the highest base total stats:\n')  
     print(df.sort_values('base_total', ascending=False).head(5))
-
-
-def general_stats(df):
-
-    
-    df = df[['name', 'type1', 'type2', 'classfication', 'height_m', 'weight_kg']]
-
-    print('The number of Pokemon based on the filters: {}'.format(str(df.shape[0])))
-    print('The general information of these Pokemon:\n')   
-    print(df)
 
 
 
