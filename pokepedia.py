@@ -6,6 +6,9 @@ import numpy as np
 def first_input():
 
     print('Hello and welcome to PokePedia! Let\'s explore the wonderful world of Pokemon!')
+    print('')
+    print('*'*20)
+    print('')
 
     search = input('Choose whether to search for Pokemon on basis of "name" or "type":\n').lower()
     while search not in ['name', 'type']:
@@ -15,7 +18,7 @@ def first_input():
 
 def poke_input():
     
-    name = input('Enter Pokemon name:').title()
+    name = input('Enter Pokemon name:\n').title()
 
     print('-'*20)
     return name
@@ -73,25 +76,32 @@ def general_stats(df):
 def sort_stats(df):
 
     df = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'base_total']]
-
+    
+    print('')
     print('Top 5 Pokemon with the highest hp stats:\n')  
     print(df.sort_values('hp', ascending=False).head(5))
 
+    print('')
     print('Top 5 Pokemon with the highest attack stats:\n')  
     print(df.sort_values('attack', ascending=False).head(5))
 
+    print('')
     print('Top 5 Pokemon with the highest defense stats:\n')  
     print(df.sort_values('defense', ascending=False).head(5))
 
+    print('')
     print('Top 5 Pokemon with the highest special attack stats:\n')  
     print(df.sort_values('sp_attack', ascending=False).head(5))
 
-    print('Top 5 Pokemon with the highest defense stats:\n')  
+    print('')
+    print('Top 5 Pokemon with the highest special defense stats:\n')  
     print(df.sort_values('sp_defense', ascending=False).head(5))
 
+    print('')
     print('Top 5 Pokemon with the highest speed stats:\n')  
     print(df.sort_values('speed', ascending=False).head(5))
 
+    print('')
     print('Top 5 Pokemon with the highest base total stats:\n')  
     print(df.sort_values('base_total', ascending=False).head(5))
 
