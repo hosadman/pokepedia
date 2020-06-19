@@ -4,7 +4,8 @@ import numpy as np
 
 
 def first_input():
-
+    print('')
+    print('')
     print('Hello and welcome to PokePedia! Let\'s explore the wonderful world of Pokemon!')
     print('')
     print('*'*20)
@@ -25,9 +26,11 @@ def poke_input():
 
 def load_data1(name):
     
-    df = pd.read_csv('pokemon.csv')
+    df = pd.read_csv('pokedex.csv')
 
-    df = df[['name', 'type1', 'type2', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'base_total']]
+    df.set_index('pokedex_number')
+
+    df = df[['pokedex_number', 'name', 'type_1', 'type_2', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'total_points']]
 
     df = df[df['name'] == name]
 
@@ -35,13 +38,13 @@ def load_data1(name):
 
 def type_input():
     
-    pokegen = input('Enter any desired generation from 1-7 whose Pokemon you wish to explore\n(type "all" if you wish to see all"):\n').lower()
-    while pokegen not in ['all', '1', '2', '3', '4', '5', '6', '7']:
-        pokegen = input('Invalid input. Either input numbers 1-7 or type "all" for all generations').lower()
+    pokegen = input('Enter any desired generation from 1-8 whose Pokemon you wish to explore\n(type "all" if you wish to see all"):\n').title()
+    while pokegen not in ['All', '1', '2', '3', '4', '5', '6', '7', '8']:
+        pokegen = input('Invalid input. Either input numbers 1-8 or type "all" for all generations').title()
     
-    poketype = input('Enter any Pokemon type whose data you wish to explore\n(type "all" if you wish to see all"):\n').lower()
-    while poketype not in ['all', 'fire', 'water', 'grass', 'electric', 'ground', 'rock', 'fighting', 'ice', 'flying', 'psychic', 'ghost', 'normal', 'dark', 'steel', 'bug', 'poison', 'dragon', 'fairy']:
-        poketype = input('Invalid input. Either input any specific Pokémon type or type "all" for all types').lower()
+    poketype = input('Enter any Pokemon type whose data you wish to explore\n(type "all" if you wish to see all"):\n').title()
+    while poketype not in ['All', 'Fire', 'Water', 'Grass', 'Electric', 'Ground', 'Rock', 'Fighting', 'Ice', 'Flying', 'Psychic', 'Ghost', 'Normal', 'Dark', 'Steel', 'Bug', 'Poison', 'Dragon', 'Fairy']:
+        poketype = input('Invalid input. Either input any specific Pokémon type or type "all" for all types').title()
     
     print('-'*20)
     return pokegen, poketype
@@ -49,24 +52,25 @@ def type_input():
 
 def load_data2(pokegen, poketype):
     
-    df = pd.read_csv('pokemon.csv')
+    df = pd.read_csv('pokedex.csv')
 
-    if pokegen != 'all':
+    df.set_index('pokedex_number')
+
+    if pokegen != 'All':
         pokegen = int(pokegen)
         df = df[df['generation'] == pokegen]
     
-    if poketype != 'all':
-        df = df[(df['type1'] == poketype) | (df['type2'] == poketype)]
+    if poketype != 'All':
+        df = df[(df['type_1'] == poketype) | (df['type_2'] == poketype)]
 
      
-
     return df
 
 
 def general_stats(df):
 
     
-    df = df[['name', 'type1', 'type2', 'classfication', 'height_m', 'weight_kg']]
+    df = df[['pokedex_number', 'name', 'type_1', 'type_2', 'species', 'height_m', 'weight_kg']]
 
     print('The number of Pokemon based on the filters: {}'.format(str(df.shape[0])))
     print('The general information of these Pokemon:\n')   
@@ -75,8 +79,8 @@ def general_stats(df):
 
 def sort_stats(df):
 
-    df = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'base_total']]
-    
+    df = df[['pokedex_number', 'name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed', 'total_points']]
+
     print('')
     print('Top 5 Pokemon with the highest hp stats:\n')  
     print(df.sort_values('hp', ascending=False).head(5))
@@ -103,7 +107,7 @@ def sort_stats(df):
 
     print('')
     print('Top 5 Pokemon with the highest base total stats:\n')  
-    print(df.sort_values('base_total', ascending=False).head(5))
+    print(df.sort_values('total_points', ascending=False).head(5))
 
 
 
