@@ -38,13 +38,13 @@ def load_data1(name):
 
 def type_input():
     
-    pokegen = input('Enter any desired generation from 1-8 whose Pokemon you wish to explore\n(type "all" if you wish to see all"):\n').title()
+    pokegen = input('Enter any desired generation from 1-8 whose Pokemon you wish to explore\n(type "All" if you wish to see all"):\n').title()
     while pokegen not in ['All', '1', '2', '3', '4', '5', '6', '7', '8']:
-        pokegen = input('Invalid input. Either input numbers 1-8 or type "all" for all generations').title()
+        pokegen = input('Invalid input. Either input numbers 1-8 or type "All" for all generations').title()
     
-    poketype = input('Enter any Pokemon type whose data you wish to explore\n(type "all" if you wish to see all"):\n').title()
+    poketype = input('Enter any Pokemon type whose data you wish to explore\n(type "All" if you wish to see all"):\n').title()
     while poketype not in ['All', 'Fire', 'Water', 'Grass', 'Electric', 'Ground', 'Rock', 'Fighting', 'Ice', 'Flying', 'Psychic', 'Ghost', 'Normal', 'Dark', 'Steel', 'Bug', 'Poison', 'Dragon', 'Fairy']:
-        poketype = input('Invalid input. Either input any specific Pokémon type or type "all" for all types').title()
+        poketype = input('Invalid input. Either input any specific Pokémon type or type "All" for all types').title()
     
     print('-'*20)
     return pokegen, poketype
